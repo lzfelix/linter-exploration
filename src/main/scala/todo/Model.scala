@@ -1,8 +1,8 @@
-package app
+package todo
 
 import java.time.LocalDate
 
-object Datatypes {
+object Model {
   type TodoList = Map[String, List[Task]]
 
   case class Task(name: String,

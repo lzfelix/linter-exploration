@@ -1,8 +1,8 @@
-package app
+package todo
 
-import app.Datatypes.TodoList
+import todo.Model.TodoList
 
-object StateTracker {
+object Controller {
   def list(todoList: TodoList): TodoList = {
     println("list tasks")
     todoList
