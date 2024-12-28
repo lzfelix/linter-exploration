@@ -7,7 +7,7 @@ name: Scala CI
 
 on:
   push:
-    branches: [ "main" "add-linting-to-ci" ]
+    branches: [ "main", "add-linting-to-ci" ]
   pull_request:
     branches: [ "main" ]
 
