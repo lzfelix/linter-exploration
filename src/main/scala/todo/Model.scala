@@ -8,7 +8,8 @@ object Model {
   case class Task(
       name: String,
       description: String,
-      startDate: LocalDate, dueBy: LocalDate,
+      startDate: LocalDate,
+      dueBy: LocalDate,
       status: String
   )
 }
