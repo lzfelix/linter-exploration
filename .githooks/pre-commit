@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Define color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No color
+
+echo "Running pre-commit checks on staged files..."
+
+# Get a list of staged `.scala` files
+STAGED_SCALA_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.scala$')
+
+# Exit early if no Scala files are staged
+if [ -z "$STAGED_SCALA_FILES" ]; then
+  echo -e "${GREEN}No Scala files are staged for commit. Skipping scalafmt check.${NC}"
+  exit 0
+fi
+
+# Check formatting for all staged Scala files
+SCALAFMT_FAILED=false
+for file in $STAGED_SCALA_FILES; do
+  scalafmt --test "$file"
+  if [ $? -ne 0 ]; then
+    echo -e "${RED}File not formatted: $file${NC}"
+    SCALAFMT_FAILED=true
+  fi
+done
+
+# If any file failed formatting, ask the user to fix it
+if [ "$SCALAFMT_FAILED" = true ]; then
+  echo -e "${RED}Pre-commit hook failed: Some files are not formatted.${NC}"
+  echo -e "${RED}Please run 'scalafmt' to format your code.${NC}"
+  exit 1
+fi
+
+echo -e "${GREEN}All pre-commit checks passed.${NC}"
+exit 0
