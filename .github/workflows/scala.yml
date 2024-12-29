@@ -9,7 +9,7 @@ on:
   push:
     branches: [ "main", "test" ]
   pull_request:
-    branches: [ "main", "test" ]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
