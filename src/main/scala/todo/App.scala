@@ -21,5 +21,5 @@ object App extends App {
     updateWorld(todoList)
   }
 
-  updateWorld(Map.empty)
+  updateWorld(List.empty)
 }
