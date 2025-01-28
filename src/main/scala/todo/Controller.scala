@@ -4,8 +4,8 @@ import todo.Model.TodoList
 
 object Controller {
   def list(todoList: TodoList): TodoList = {
-    println("list tasks")
-    todoList
+              println("list tasks")
+        todoList
   }
 
   def add(todoList: TodoList): TodoList = {
