@@ -3,7 +3,7 @@ package todo
 import java.time.LocalDate
 
 object Model {
-  type TodoList = Map[Int, List[Task]]
+  type TodoList = List[Task]
 
   case class Task(
       name: String,

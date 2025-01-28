@@ -5,6 +5,7 @@ import todo.Model.TodoList
 object Controller {
   def list(todoList: TodoList): TodoList = {
     println("list tasks")
+          todoList.foreach(task => println(s"${task.name} -> ${task.status}"))
     todoList
   }
 
